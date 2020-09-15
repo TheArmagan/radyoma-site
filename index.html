@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <meta property="og:site_name" content="RADYOMA" />
+    <meta property="og:title" content="Radio" />
+    <meta property="og:description" content="RADYOMA Radio Provided By Kıraç Armağan Önal" />
+    <meta property="og:image" content="http://local.onal.xyz:8000/radyoma/icon512.png" />
+    <link rel="icon" href="./icon64.png">
+    <title>RADYOMA - Provided by Kıraç Armağan Önal</title>
+</head>
+<body class="hidden-main hidden">
+    <!-- <canvas id="waveformCanvas"></canvas> -->
+    <div id="visualizerWrapper"></div>
+    <div id="topBarWrapper">
+        <div id="topBar">
+            <div id="topBarContainer">
+                <div><h1>RADYOMA</h1></div>
+                <div><p id="listenerAmountText">0 dinleyici.</p></div>
+                <h1 id="listeningTimeText">00:00:00</h1>
+            </div>
+        </div>
+    </div>
+    <div id="middleContainer">
+        <div id="artworkImageWrapper">
+            <img id="artworkImage">
+            <div id="artworkImageSelectionBlocker"></div>
+        </div>
+        <h1 id="titleText">...</h1>
+        <h1 id="artistText">...</h1>
+    </div>
+    <div id="bottomBarWrapper">
+        <div id="bottomBar">
+            <div id="bottomBarContainer">
+                <button id="playPauseButton">
+                    <img id="playPauseButtonImage" src="./play.svg">
+                </button>
+                <div id="volumeSliderItemsWrapper">
+                    <label for="volumeSlider">
+                        <input id="volumeSlider" type="range" min="0.01" max="1" step="0.01">
+                        <span id="volumeSliderValueText">100</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="mainAudioElement"></audio>
+    <script src="https://unpkg.com/moment@2.27.0/min/moment.min.js"></script>
+    <script src="https://unpkg.com/moment-duration-format@2.3.2/lib/moment-duration-format.js"></script>
+    <script>momentDurationFormatSetup(moment);</script>
+    <script src="./script.js"></script>
+    <script src="./FFT.js"></script>
+    <script src="./audiovisualizer.js"></script>
+</body>
+</html>

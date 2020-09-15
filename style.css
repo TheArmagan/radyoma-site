@@ -1,0 +1,251 @@
+* {
+    outline: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background-color:#272727;
+}
+
+html,
+body {
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: white;
+}
+
+body.hidden-main {
+    transition: 2500ms ease-in-out opacity, 2500ms ease-in-out filter;
+    filter: blur(0px);
+}
+
+
+body.hidden {
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(6px);
+}
+
+body {
+    pointer-events: all;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+body.night-mode {
+    background-color: #202639;
+    background-image: linear-gradient( 112.1deg,  #202639 11.4%, #3f4c77 70.2% );
+    color: #c8c8c8;
+}
+
+#topBarWrapper {
+    display: block;
+    width: 100vw;
+    height: 4rem;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#topBar {
+    display: block;
+    width: 100vw;
+    height: 4rem;
+    margin: 0 auto;
+    background-color: #00000031;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+#topBarContainer {
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#listeningTimeText {
+    /** bunu yapmak istemiyordum ama neden olmadığını anlamadım :(**/
+    position: absolute;
+    right: 1rem;
+    
+    font-weight: 500;
+    font-family: monospace;
+    opacity: 0.8;
+}
+
+#bottomBarWrapper {
+    display: block;
+    width: 100vw;
+    height: 6rem;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+#bottomBar {
+    display: block;
+    max-width: 1000px;
+    width: 90%;
+    height: 6rem;
+    margin: 0 auto;
+    background-color: #C850C0;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 0;
+    border-radius: 50% 50% 0% 100% / 100% 100% 0% 0%;
+    display: flex;
+    align-items: center;
+}
+
+body.night-mode #bottomBar {
+    background-color: #202639;
+}
+
+#bottomBarContainer {
+    display: block;
+    width: 90vw;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#playPauseButton {
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    transition: 100ms ease-in-out transform;
+}
+
+#playPauseButton:hover {
+    transform: scale(1.2);
+}
+
+#playPauseButtonImage {
+    filter: invert(100%);
+    width: 3rem;
+    height: auto;
+}
+
+#playPauseButtonImage.loading {
+    animation-name: loadingOpacity;
+    animation-duration: 800ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+#middleContainer {
+    margin: 0 auto;
+    margin-top: 6rem;
+    max-width: 720px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+#artworkImageWrapper {
+    position: relative;
+    background-color: rgb(223, 223, 223);
+    margin: 0 auto;
+    min-width: 320px;
+    width: 320px;
+    min-height: 320px;
+    height: 320px;
+    box-shadow: 0 18px 16px -16px black;
+    user-select: none;
+
+    animation-name: artworkAnimation;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+#artworkImage {
+    width: 320px;
+    height: 320px;
+}
+
+#artworkImageSelectionBlocker {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 0;
+    top: 0;
+    transition: backdrop-filter 110ms;
+}
+
+body.night-mode #artworkImageSelectionBlocker {
+    backdrop-filter: brightness(0.6);
+}
+
+#titleText {
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 2rem;
+}
+
+#artistText {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.6;
+}
+
+#listenerAmountText {
+    font-size: 1rem;
+    opacity: 0.5;
+    margin-left: 1rem;
+}
+
+#visualizerWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 4rem;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.visualizerBar {
+    transition: all 110ms;
+    background-color: hsl(305, 53%, 55%);
+    display: inline-block;
+    margin: 0 0.1%;
+    width: 1rem;
+    height: 1rem;
+    max-height: 3.40rem;
+    box-shadow: 0 0px 0px 6px black;
+}
+
+
+
+@keyframes artworkAnimation {
+    0% {
+        transform: translate(0, 0);
+        box-shadow: 0 24px 22px -22px black;
+    }
+
+    100% {
+        transform: translate(0, 6px);
+        box-shadow: 0 18px 16px -16px black;
+    }
+}
+
+@keyframes loadingOpacity {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
